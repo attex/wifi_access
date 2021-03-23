@@ -3,10 +3,10 @@ import 'dart:async';
 import 'package:flutter/services.dart';
 
 class DHCP {
-  final String ip;
-  final String gateway;
-  final String netmask;
-  final String broadcast;
+  final String? ip;
+  final String? gateway;
+  final String? netmask;
+  final String? broadcast;
 
   DHCP({
     this.ip = "0.0.0.0",
@@ -26,7 +26,7 @@ class WifiAccess {
   static const MethodChannel _channel = const MethodChannel('wifi_access');
 
   static Future<DHCP> get dhcp async {
-    return DHCP.fromMap(
-        Map<String, String>.from(await _channel.invokeMethod('getDHCP')));
+    return DHCP.fromMap(Map<String, String>.from(await (_channel
+        .invokeMethod('getDHCP') as FutureOr<Map<dynamic, dynamic>>)));
   }
 }
