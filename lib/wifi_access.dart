@@ -26,7 +26,7 @@ class WifiAccess {
   static const MethodChannel _channel = const MethodChannel('wifi_access');
 
   static Future<DHCP> get dhcp async {
-    return DHCP.fromMap(Map<String, String>.from(await (_channel
-        .invokeMethod('getDHCP') as FutureOr<Map<dynamic, dynamic>>)));
+    return DHCP.fromMap(
+        Map<String, String>.from(await _channel.invokeMethod('getDHCP')));
   }
 }
